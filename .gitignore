@@ -1,5 +1,6 @@
 # Local settings (contains secrets)
 local.settings.json
+!local.settings.json.example
 
 # Python virtual environment
 .venv/
