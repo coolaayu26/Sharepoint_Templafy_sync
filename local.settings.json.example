@@ -1,0 +1,28 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+
+    "GRAPH_TENANT_ID": "<your-aad-tenant-id>",
+    "GRAPH_CLIENT_ID": "<your-app-registration-client-id>",
+    "GRAPH_CLIENT_SECRET": "<your-app-registration-client-secret>",
+
+    "SHAREPOINT_SITE_ID": "<hostname>,<site-id>,<web-id>",
+    "SHAREPOINT_DRIVES": "[\"<drive-id-1>\", \"<drive-id-2>\"]",
+    "SHAREPOINT_PRIMARY_DRIVE": "Documents",
+
+    "TEMPLAFY_TENANT_ID": "<your-templafy-tenant-subdomain>",
+    "TEMPLAFY_API_KEY": "<your-templafy-api-key>",
+    "TEMPLAFY_SPACE_ID": "<your-templafy-space-id>",
+
+    "STATE_STORAGE_ACCOUNT_URL": "https://<your-storage-account>.blob.core.windows.net",
+    "STATE_CONTAINER_NAME": "sync-state",
+    "STATE_BLOB_NAME": "sharepoint-templafy-state.json",
+
+    "DRY_RUN": "true",
+    "MAX_FILE_SIZE_MB": "100",
+
+    "LIBRARY_MAP": ""
+  }
+}

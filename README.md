@@ -13,7 +13,7 @@ An Azure Function (Python, Timer Trigger) that mirrors SharePoint content into T
 │  SyncEngine                                                         │
 │    ├── SharePointClient  ──→  Microsoft Graph API                   │
 │    │     └── Recursive folder + file scan (etag-based delta)        │
-│    ├── TemplafyClient    ──→  Templafy Public API v2                │
+│    ├── TemplafyClient    ──→  Templafy Public API v3                │
 │    │     ├── Folder: GET/POST/PATCH children                        │
 │    │     └── Asset:  POST (upload) / PATCH (replace) / DELETE       │
 │    └── SyncStateStore   ──→  Azure Blob Storage (JSON)              │
@@ -140,6 +140,9 @@ Change detection is etag-based — no file content hashing, minimal Graph API co
 - **Rate limits**: Templafy API has rate limits. The client retries on 429 with `Retry-After`. For initial sync of large libraries, set `MAX_FILE_SIZE_MB` conservatively.
 - **First run**: All files will be uploaded. This may take time for large libraries. Consider running the first sync manually during off-hours.
 - **Logs**: All runs log to Application Insights. Query: `traces | where message contains "Sync complete"`.
+- **Lease contention alert**: Set an Azure Monitor alert on Application Insights for the query `traces | where message contains "Failed to acquire blob lease"` — this fires if two instances collide and one aborts.
+- **Slow run alert**: Set an alert on `requests | where name == "sharepoint_sync" and duration > 120000` to catch runs taking over 2 minutes, which may indicate a growing library or API slowdown.
+- **Secrets rotation**: Rotate the Templafy API key every 90 days and the Graph client secret before its expiry date. See `CONTRIBUTING.md` for steps.
 
 ---
 
