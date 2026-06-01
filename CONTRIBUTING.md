@@ -99,7 +99,7 @@ Always deploy from the project root (the directory containing `requirements.txt`
 
 ---
 
-## Secrets Rotation
+## Secrets Management
 
-- **Templafy API key** — rotate every 90 days. Generate a new key in Templafy Admin → API Keys, update the `templafy-api-key` secret in Key Vault. The Function App picks it up automatically via the Key Vault reference.
+- **Templafy API key** — static key stored in Key Vault. Update the `templafy-api-key` secret only if the key is revoked or you intentionally generate a replacement in Templafy Admin → API Keys. The Function App picks it up automatically via the Key Vault reference.
 - **Graph API client secret** — rotate before expiry (default 2 years). Update `graph-client-secret` in Key Vault.

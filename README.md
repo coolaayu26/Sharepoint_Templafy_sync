@@ -142,7 +142,7 @@ Change detection is etag-based — no file content hashing, minimal Graph API co
 - **Logs**: All runs log to Application Insights. Query: `traces | where message contains "Sync complete"`.
 - **Lease contention alert**: Set an Azure Monitor alert on Application Insights for the query `traces | where message contains "Failed to acquire blob lease"` — this fires if two instances collide and one aborts.
 - **Slow run alert**: Set an alert on `requests | where name == "sharepoint_sync" and duration > 120000` to catch runs taking over 2 minutes, which may indicate a growing library or API slowdown.
-- **Secrets rotation**: Rotate the Templafy API key every 90 days and the Graph client secret before its expiry date. See `CONTRIBUTING.md` for steps.
+- **Secrets management**: The Templafy API key is static and is stored in Key Vault via an app setting reference. Replace it only if it is revoked or you intentionally generate a new one. Rotate the Graph client secret before its expiry date. See `CONTRIBUTING.md` for details.
 
 ---
 
