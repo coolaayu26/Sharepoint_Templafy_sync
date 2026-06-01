@@ -1,0 +1,5 @@
+azure-functions==1.18.0
+azure-identity==1.16.0
+azure-storage-blob==12.19.1
+msal==1.27.0
+requests==2.31.0

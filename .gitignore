@@ -1,0 +1,18 @@
+# Local settings (contains secrets)
+local.settings.json
+
+# Python virtual environment
+.venv/
+
+# Azure Functions local packages
+.python_packages/
+
+# Python cache and test artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
